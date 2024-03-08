@@ -26,12 +26,28 @@ const personalMovieDB = {
 	privat: false,
 };
 
-for (let i = 1; i <= 2; i++) {
+for (let i = 0; i < 2; i++) {
 	const a = prompt('One of the films which you watched?'),
 		b = prompt('Give it film rating pls');
-
-	personalMovieDB.movies[a] = b;
+	if (a.length <= 50 && a != null && a != '') {
+		personalMovieDB.movies[a] = b;
+	} else {
+		console.log('ERROR');
+		i--;
+	}
+	switch (true) {
+		case personalMovieDB.count < 10:
+			console.log('You watched not enough movies');
+			break;
+		case personalMovieDB.count >= 10 && personalMovieDB.count <= 30:
+			console.log('You are classic movie watcher');
+			break;
+		case personalMovieDB.count > 30:
+			console.log('How much time do you have MOTHERFUCKER???');
+			break;
+		default:
+			console.log('Something get wrong');
+	}
 }
-('');
 
 console.log(personalMovieDB);
