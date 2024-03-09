@@ -1,4 +1,4 @@
-// 'use strict';
+'use strict';
 
 // const numbersOfFilms = +prompt('How many films did you watched5');
 
