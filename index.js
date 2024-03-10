@@ -30,22 +30,24 @@
 
 // COPY OBJECTS
 
-let obj1 = {
-	a: 1,
-	b: 2,
-	c: {
-		y: 50,
-		z: 100,
-	},
-};
+// let obj1 = {
+// 	a: 1,
+// 	b: 2,
+// 	c: {
+// 		y: 50,
+// 		z: 100,
+// 	},
+// };
 
-let obj2 = { ...obj1 };
-obj2.a = 5;
+// let obj2 = { ...obj1 };
+// obj2.a = 5;
 
-let obj3 = Object.assign({}, obj1);
+// let obj3 = Object.assign({}, obj1);
 
-obj3.b = 15;
+// obj3.b = 15;
 
-console.log(obj1);
-console.log(obj2);
-console.log(obj3);
+// obj2.c.y = 7;
+
+// console.log(obj1);
+// console.log(obj2);
+// console.log(obj3);
