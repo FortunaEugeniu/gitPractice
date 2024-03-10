@@ -38,7 +38,7 @@ const eugeniu = {
 
 console.log(eugeniu.objectLength());
 
-const { name, weight } = eugeniu;
+const { name, weight } = eugeniu; // Destructurization
 
-console.log(name);
-console.log(weight);
+console.log(name); // Eugeniu
+console.log(weight); // 85
