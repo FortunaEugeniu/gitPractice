@@ -16,71 +16,66 @@
 
 // Код возьмите из предыдущего домашнего задания
 
-let numbersOfFilms;
-
-function start() {
-	numbersOfFilms = +prompt('How many films did you watched?');
-
-	while (
-		numbersOfFilms == '' ||
-		numbersOfFilms == null ||
-		isNaN(numbersOfFilms)
-	) {
-		numbersOfFilms = +prompt('How many films did you watched?');
-	}
-}
-
-start();
-
 const personalMovieDB = {
-	count: numbersOfFilms,
+	count: 0,
 	movies: {},
 	actors: {},
 	genres: [],
 	privat: false,
-};
+	start: function () {
+		this.count = +prompt('How many films did you watched?');
 
-function showMyDB(hidden) {
-	hidden.privat === false ? console.log(personalMovieDB) : null;
-}
-
-showMyDB(personalMovieDB);
-
-function rememberMyFilms() {
-	for (let i = 0; i < 2; i++) {
-		const a = prompt('One of the films which you watched?'),
-			b = prompt('Give it film rating pls');
-		if (a.length <= 50 && a != null && a != '') {
-			personalMovieDB.movies[a] = b;
-		} else {
-			console.log('ERROR');
-			i--;
+		while (this.count == '' || this.count == null || isNaN(this.count)) {
+			this.count = +prompt('How many films did you watched?');
 		}
-	}
-}
+	},
+	rememberMyFilms: function () {
+		for (let i = 0; i < 2; i++) {
+			const a = prompt('One of the films which you watched?'),
+				b = prompt('Give it film rating pls');
+			if (a.length <= 50 && a != null && a != '') {
+				this.movies[a] = b;
+			} else {
+				console.log('ERROR');
+				i--;
+			}
+		}
+	},
+	showMyDB: function () {
+		this.privat === false ? console.log(this) : null;
+	},
+	writeYourGenres: function () {
+		for (let i = 1; i <= 3; i++) {
+			let genre = prompt(`What is your favorite genre on ${i} position?`);
 
-function writeYourGenres() {
-	for (let i = 1; i <= 3; i++) {
-		personalMovieDB.genres.push(
-			prompt(`What is your favorite genre on ${i} position?`)
-		);
-	}
-}
-
-writeYourGenres();
-
-function detectPersonalLevel() {
-	switch (true) {
-		case personalMovieDB.count < 10:
-			console.log('You watched not enough movies');
-			break;
-		case personalMovieDB.count >= 10 && personalMovieDB.count <= 30:
-			console.log('You are classic movie watcher');
-			break;
-		case personalMovieDB.count > 30:
-			console.log('How much time do you have MOTHERFUCKER???');
-			break;
-		default:
-			console.log('Something get wrong');
-	}
-}
+			if (genre === '' || genre === null) {
+				console.log('Something get wring, pleas try again');
+				i--;
+			} else {
+				this.genres.push(genre);
+			}
+		}
+		this.genres.forEach((el, index) => {
+			console.log(`The favorite genre ${index + 1} is ${el}`);
+		});
+	},
+	detectPersonalLevel: function () {
+		switch (true) {
+			case this.count < 10:
+				console.log('You watched not enough movies');
+				break;
+			case this.count >= 10 && this.count <= 30:
+				console.log('You are classic movie watcher');
+				break;
+			case this.count > 30:
+				console.log('How much time do you have MOTHERFUCKER???');
+				break;
+			default:
+				console.log('Something get wrong');
+		}
+	},
+	toggleVisibleMyDB: function () {
+		this.privat === false ? (this.privat = true) : (this.privat = false);
+		this.showMyDB();
+	},
+};
